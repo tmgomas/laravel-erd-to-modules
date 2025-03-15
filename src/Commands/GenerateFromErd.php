@@ -46,9 +46,17 @@ class GenerateFromErd extends Command
             $this->info('Parsing ERD diagram...');
             $erdContent = File::get($filePath);
 
-            $entities = $parser->parse($erdContent);
+            // Parse the ERD content
+            $parsedData = $generator->parseErd($erdContent);
+            $entities = $parsedData['entities'];
+            $relationships = $parsedData['relationships'] ?? [];
 
-            $this->info('Found ' . count($entities) . ' entities in the ERD.');
+            $this->info('Found ' . count($entities) . ' entities in the ERD:');
+            foreach ($entities as $entityName => $entityData) {
+                $this->line(' - ' . $entityName . ' (' . count($entityData['attributes']) . ' attributes)');
+            }
+
+            $this->info('Found ' . count($relationships) . ' relationships in the ERD.');
 
             $force = $this->option('force');
 
@@ -56,15 +64,39 @@ class GenerateFromErd extends Command
             $progressBar = $this->output->createProgressBar(count($entities));
             $progressBar->start();
 
-            foreach ($entities as $entityName => $attributes) {
-                $generator->generateForEntity($entityName, $attributes, $force);
+            $generatedFiles = [];
+
+            foreach ($entities as $entityName => $entityData) {
+                $entityFiles = $generator->generateForEntity($entityName, $entityData['attributes'], $force);
+                $generatedFiles = array_merge($generatedFiles, $entityFiles);
                 $progressBar->advance();
             }
 
             $progressBar->finish();
-            $this->newLine();
+            $this->newLine(2);
 
+            $this->info('Generated ' . count($generatedFiles) . ' files:');
+
+            // Group files by type for better readability
+            $filesByType = [];
+            foreach ($generatedFiles as $file) {
+                $relativePath = str_replace(base_path() . '/', '', $file);
+                $type = explode('/', $relativePath)[0];
+                $filesByType[$type][] = $relativePath;
+            }
+
+            foreach ($filesByType as $type => $files) {
+                $this->line("<comment>$type:</comment>");
+                foreach ($files as $file) {
+                    $this->line("  - $file");
+                }
+            }
+
+            $this->newLine();
             $this->info('Module structure created successfully!');
+            $this->info('Remember to register the routes in your routes/web.php file:');
+            $this->line("// Example:");
+            $this->line("// require base_path('routes/users.php');");
 
             return 0;
         } catch (ErdParseException $e) {
