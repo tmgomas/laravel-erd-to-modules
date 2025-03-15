@@ -1,6 +1,6 @@
 <?php
 
-namespace YourName\ErdToModules\Exceptions;
+namespace tmgomas\ErdToModules\Exceptions;
 
 use Exception;
 

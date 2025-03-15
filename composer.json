@@ -10,6 +10,12 @@
             "email": "your.email@example.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/tmgomas/laravel-erd-to-modules"
+        }
+    ],
     "require": {
         "php": "^7.4|^8.0",
         "illuminate/support": "^8.0|^9.0|^10.0",
@@ -22,21 +28,21 @@
     },
     "autoload": {
         "psr-4": {
-            "YourName\\ErdToModules\\": "src/"
+            "tmgomas\\ErdToModules\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "YourName\\ErdToModules\\Tests\\": "tests/"
+            "tmgomas\\ErdToModules\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "YourName\\ErdToModules\\ErdToModulesServiceProvider"
+                "tmgomas\\ErdToModules\\ErdToModulesServiceProvider"
             ],
             "aliases": {
-                "ErdModules": "YourName\\ErdToModules\\Facades\\ErdModules"
+                "ErdModules": "tmgomas\\ErdToModules\\Facades\\ErdModules"
             }
         }
     },

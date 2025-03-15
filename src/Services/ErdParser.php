@@ -1,6 +1,6 @@
 <?php
 
-namespace YourName\ErdToModules\Services;
+namespace tmgomas\ErdToModules\Services;
 
 use YourName\ErdToModules\Exceptions\ErdParseException;
 

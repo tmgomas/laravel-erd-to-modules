@@ -1,6 +1,6 @@
 <?php
 
-namespace YourName\ErdToModules;
+namespace tmgomas\ErdToModules;
 
 use Illuminate\Support\ServiceProvider;
 use YourName\ErdToModules\Commands\GenerateFromErd;
@@ -17,7 +17,8 @@ class ErdToModulesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/erd-to-modules.php', 'erd-to-modules'
+            __DIR__ . '/../config/erd-to-modules.php',
+            'erd-to-modules'
         );
 
         $this->app->singleton('erd-parser', function () {
@@ -42,12 +43,12 @@ class ErdToModulesServiceProvider extends ServiceProvider
     {
         // Publishing config
         $this->publishes([
-            __DIR__.'/../config/erd-to-modules.php' => config_path('erd-to-modules.php'),
+            __DIR__ . '/../config/erd-to-modules.php' => config_path('erd-to-modules.php'),
         ], 'erd-to-modules-config');
 
         // Publishing stubs
         $this->publishes([
-            __DIR__.'/../resources/stubs' => resource_path('stubs/vendor/erd-to-modules'),
+            __DIR__ . '/../resources/stubs' => resource_path('stubs/vendor/erd-to-modules'),
         ], 'erd-to-modules-stubs');
 
         // Register commands

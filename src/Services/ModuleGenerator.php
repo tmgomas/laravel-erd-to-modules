@@ -1,6 +1,6 @@
 <?php
 
-namespace YourName\ErdToModules\Services;
+namespace tmgomas\ErdToModules\Services;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;

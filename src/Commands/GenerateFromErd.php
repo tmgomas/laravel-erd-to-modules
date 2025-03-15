@@ -1,6 +1,6 @@
 <?php
 
-namespace ErdToModules\Commands;
+namespace tmgomas\ErdToModules\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;

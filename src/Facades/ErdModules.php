@@ -1,6 +1,7 @@
 <?php
 
-namespace YourName\ErdToModules\Facades;
+
+namespace tmgomas\ErdToModules\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
