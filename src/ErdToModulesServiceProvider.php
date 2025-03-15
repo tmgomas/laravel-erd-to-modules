@@ -25,9 +25,21 @@ class ErdToModulesServiceProvider extends ServiceProvider
             return new ErdParser();
         });
 
+        $this->app->singleton(ErdParser::class, function () {
+            return new ErdParser();
+        });
+
         $this->app->singleton('module-generator', function ($app) {
             return new ModuleGenerator(
-                $app->make('erd-parser'),
+                $app->make(ErdParser::class),
+                $app['config']->get('erd-to-modules.paths', []),
+                $app['files']
+            );
+        });
+
+        $this->app->singleton(ModuleGenerator::class, function ($app) {
+            return new ModuleGenerator(
+                $app->make(ErdParser::class),
                 $app['config']->get('erd-to-modules.paths', []),
                 $app['files']
             );

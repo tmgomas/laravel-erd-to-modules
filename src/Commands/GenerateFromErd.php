@@ -29,8 +29,8 @@ class GenerateFromErd extends Command
     /**
      * Execute the console command.
      *
-     * @param \YourName\ErdToModules\Services\ErdParser $parser
-     * @param \YourName\ErdToModules\Services\ModuleGenerator $generator
+     * @param \tmgomas\ErdToModules\Services\ErdParser $parser
+     * @param \tmgomas\ErdToModules\Services\ModuleGenerator $generator
      * @return int
      */
     public function handle(ErdParser $parser, ModuleGenerator $generator)
