@@ -2,7 +2,7 @@
 
 namespace tmgomas\ErdToModules\Services;
 
-use YourName\ErdToModules\Exceptions\ErdParseException;
+use tmgomas\ErdToModules\Exceptions\ErdParseException;
 
 class ErdParser
 {

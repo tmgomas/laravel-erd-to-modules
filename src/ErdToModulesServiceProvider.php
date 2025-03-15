@@ -3,9 +3,9 @@
 namespace tmgomas\ErdToModules;
 
 use Illuminate\Support\ServiceProvider;
-use YourName\ErdToModules\Commands\GenerateFromErd;
-use YourName\ErdToModules\Services\ErdParser;
-use YourName\ErdToModules\Services\ModuleGenerator;
+use tmgomas\ErdToModules\Commands\GenerateFromErd;
+use tmgomas\ErdToModules\Services\ErdParser;
+use tmgomas\ErdToModules\Services\ModuleGenerator;
 
 class ErdToModulesServiceProvider extends ServiceProvider
 {

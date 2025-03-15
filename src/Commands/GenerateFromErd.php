@@ -4,9 +4,9 @@ namespace tmgomas\ErdToModules\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use YourName\ErdToModules\Exceptions\ErdParseException;
-use YourName\ErdToModules\Services\ErdParser;
-use YourName\ErdToModules\Services\ModuleGenerator;
+use tmgomas\ErdToModules\Exceptions\ErdParseException;
+use tmgomas\ErdToModules\Services\ErdParser;
+use tmgomas\ErdToModules\Services\ModuleGenerator;
 
 class GenerateFromErd extends Command
 {
